@@ -1,0 +1,338 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>Freshshop - Ecommerce Bootstrap 4 HTML Template</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'new_1/images/fish logo.jpeg' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static 'new_1/images/apple-touch-icon.png' %}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'new_1/css/bootstrap.min.css' %}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'new_1/css/style.css' %}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'new_1/css/responsive.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'new_1/css/custom.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'ogani/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'ogani/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'ogani/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'ogani/css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'ogani/css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'ogani/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'ogani/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'ogani/css/style.css' %}" type="text/css">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="{% static 'product_css/assets/css/all.min.css' %}">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{% static 'product_css/assets/bootstrap/css/bootstrap.min.css' %}">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="{% static 'product_css/assets/css/owl.carousel.css' %}">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="{% static 'product_css/assets/css/magnific-popup.css' %}">
+	<!-- animate css -->
+	<link rel="stylesheet" href="{% static 'product_css/assets/css/animate.css' %}">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="{% static 'product_css/assets/css/meanmenu.min.css' %}">
+	<!-- main style -->
+	<link rel="stylesheet" href="{% static 'product_css/assets/css/main.css' %}">
+	<!-- responsive -->
+	<link rel="stylesheet" href="{% static 'product_css/assets/css/responsive.css' %}">
+
+
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <!-- Start Main Top -->
+    
+    <!-- End Main Top -->
+
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                    <a class="navbar-brand" href="index.html"><img src="{% static 'new_1/images/fish logo.jpeg' %}" width="200px" class="logo" alt=""></a>
+                </div>
+                <!-- End Header Navigation -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'user_index' %}">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link " data-toggle="dropdown">Category</a>
+                            <ul class="dropdown-menu">
+                                {% for i in data2 %}
+								<li><a href="shop.html">{{i.category_name}}</a></li>
+								{% endfor %}
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link " data-toggle="dropdown">Products</a>
+                            <ul class="dropdown-menu">
+                                {% for i in data %}
+								<li><a href="shop.html">{{i.product_name}}</a></li>
+								{% endfor %}
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'user_view_recipe' %}">Recipes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                        
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav">
+                    <ul>
+                        <li class="search"><a href=""><i class="fa  fa-search "></i></a></li>
+                        <li class="nav-item nav-profile">
+							<a href="{% url 'user_cart' %}">
+								<i class="fa fa-shopping-bag"></i>
+								<span class="badge">{{c}}</span>
+								My Cart
+							</a>
+						</li>
+                        
+                        {% if 'uid' in request.session %}
+
+                        <li class="nav-item nav-profile ">
+                            <a>
+                                <b>Hello,{{request.session.username}} !</b>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-profile ">
+                            <a class="dropdown-item" href="{% url 'user_logout' %}">
+                                <i class="ti-power-off text-primary"></i>
+                                Logout
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item nav-profile ">
+                            <a class="dropdown-item" href="{% url 'user_login' %}">
+                            <i class="fas fa-unlock-alt"></i>
+                            Login
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    
+                </div>
+                <!-- End Atribute Navigation -->
+            </div>
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+
+    <!-- Start Slider -->
+    {% block content %}
+    <div id="slides-shop" class="cover-slides">
+        <ul class="slides-container">
+            <li class="text-center">
+                <img src="{% static 'new_1/images/master-slides-1.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Welcome To <br> Fish Market </strong></h1>
+                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
+                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="{% static 'new_1/images/master-slides-02.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Welcome To <br> Fish Market</strong></h1>
+                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
+                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="{% static 'new_1/images/master-slides-07.jpg' %}" >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Welcome To <br> Fish Market</strong></h1>
+                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
+                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="slides-navigation">
+            <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <!-- End Slider -->
+    <div class="products-box">
+        <div class="container">
+
+            <div class="product-section mt-150 mb-150">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2 text-center">
+                            <div class="section-title">	
+                                <h3><span class="orange-text">Our</span> Products</h3>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="special-menu text-center">
+                                <div class="button-group filter-button-group">
+                                    {% for j in data2 %}
+                                    <a href="{% url 'filter_category' filter=j.category_name  %}"><button  data-filter=".{{j.category_name}}">{{j.category_name}}</button></a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="row">
+                        {% for i in f %}
+                        <div class="col-lg-4 col-md-6 text-center">
+                            <div class="single-product-item">
+                                <div class="product-image">
+                                    <a href="single-product.html"><img src="{{i.product_image.url}}" alt="" height="200px"></a>
+                                </div>
+                                <h3>{{i.product_name}}</h3>
+                                <p class="product-price"><span>Per Kg</span> {{i.product_price}}$ </p>
+                                <form action="{% url 'single_product' ID=i.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="{{request.session.uid}}" name="user_only_id">
+                                    <input type="submit" class="cart-btn" value="View">
+                                </form>
+                                <!-- <a href="{% url 'single_product' ID=i.id %}" class="cart-btn"><i class="fas fa-eye"></i> View </a> -->
+                            </div>
+                        </div>
+                        {% endfor %}           
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div> 
+    {% endblock %}      
+
+    <div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.<br>
+						Distributed By - <a href="https://themewagon.com/">Themewagon</a>
+					</p>
+				</div>
+				<div class="col-lg-6 text-right col-md-12">
+					<div class="social-icons">
+						<ul>
+							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- End copyright  -->
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    <!-- ALL JS FILES -->
+    <script src="{% static 'new_1/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'new_1/js/popper.min.js' %}"></script>
+    <script src="{% static 'new_1/js/bootstrap.min.js' %}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{% static 'new_1/js/jquery.superslides.min.js' %}"></script>
+    <script src="{% static 'new_1/js/bootstrap-select.js' %}"></script>
+    <script src="{% static 'new_1/js/inewsticker.js' %}"></script>
+    <script src="{% static 'new_1/js/bootsnav.js.' %}"></script>
+    <script src="{% static 'new_1/js/images-loded.min.js' %}"></script>
+    <script src="{% static 'new_1/js/isotope.min.js' %}"></script>
+    <script src="{% static 'new_1/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'new_1/js/baguetteBox.min.js' %}"></script>
+    <script src="{% static 'new_1/js/form-validator.min.js' %}"></script>
+    <script src="{% static 'new_1/js/contact-form-script.js' %}"></script>
+    <script src="{% static 'new_1/js/custom.js' %}"></script>
+
+
+    <script src="{% static 'product_css/assets/js/jquery-1.11.3.min.js' %}"></script>
+	<!-- bootstrap -->
+	<script src="{% static 'product_css/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+	<!-- count down -->
+	<script src="{% static 'product_css/assets/js/jquery.countdown.js' %}"></script>
+	<!-- isotope -->
+	<script src="{% static 'product_css/assets/js/jquery.isotope-3.0.6.min.js' %}"></script>
+	<!-- waypoints -->
+	<script src="{% static 'product_css/assets/js/waypoints.js' %}"></script>
+	<!-- owl carousel -->
+	<script src="{% static 'product_css/assets/js/owl.carousel.min.js' %}"></script>
+	<!-- magnific popup -->
+	<script src="{% static 'product_css/assets/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'product_css/assets/js/jquery.meanmenu.min.js' %}"></script>
+	<script src="{% static 'product_css/assets/js/sticker.js' %}"></script>
+	<script src="{% static 'product_css/assets/js/main.js' %}"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</body>
+
+</html>

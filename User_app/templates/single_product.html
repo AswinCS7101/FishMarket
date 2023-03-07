@@ -1,0 +1,45 @@
+{% extends 'user_index.html' %}
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<div class="single-product mt-150 mb-150">
+    {% for i in data %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="single-product-img">
+                    <img src="{{i.product_image.url}}" alt="">
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="single-product-content">
+                    <h2>{{i.product_name}}</h2>
+                    <input id="product_price" type="hidden" value="{{i.product_price}}"><p  class="single-product-pricing"> ${{i.product_price}}</p>
+                    <script>
+                        $(document).ready(function(){
+                            $("#qty").change(function(){
+                                var price = $('#product_price').val();
+                                var qty = $('#qty').val()
+                                $("#inp1").val( price * qty);
+                            });
+                        });
+                    </script>
+                    <div class="single-product-form">
+                        <form action="{% url 'add_to_cart' Id=i.id %}" method="POST">
+                            {% csrf_token %}
+                            <input id="product_price" type="hidden" value="{{i.product_price}}" name="price">
+                            <input id="qty" type="number" placeholder="0" name="qty">
+                            <p><input id="inp1" type="text" name="total"></p><br>
+                            <input type="hidden" name="userID"  value="{{request.session.uid}}" >
+                            <p><input type="submit" class="cart-btn" id="cart" value="Add to Cart"></p>
+
+                        </form>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

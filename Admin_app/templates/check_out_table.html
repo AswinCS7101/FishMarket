@@ -1,0 +1,38 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-10">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Fish Categories</strong>
+            </div>
+            <div class="table-stats order-table ov-h">
+                <table class="table table-bordered" id="example" >
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="serial">#</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Phone.no</th>
+                            <th>Email</th>
+                            <th>Orders</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in data %}
+                        <tr >
+                            <td class="serial">{{i.id}}.</td>
+                            <td>  <span class="name">{{i.name}}</span> </td>
+                            <td>  <span class="name">{{i.address}}</span> </td>
+                            <td>  <span class="name">{{i.phone_no}}</span> </td>
+                            <td>  <span class="name">{{i.email}}</span> </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>        
+</div>
+{% endblock %}

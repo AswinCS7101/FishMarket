@@ -1,0 +1,47 @@
+{% extends 'Admin_index.html' %}
+{% block content %}
+<div class="row">
+    <!-- left column -->
+    <div class="col-lg-6">
+      <!-- general form elements -->
+      <div class="card bg-secondary">
+        <div class="card-header">
+          <h3 class="card-title"> Add Fish Recipes</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="{% url 'adding_recipe' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="card-body">
+            <div class="form-group">
+              <label >Recipe Name</label>
+              <input type="text" class="form-control"  name="recipe_name">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Recipe Ingredients</label>
+              <textarea style="white-space:pre-wrap; word-wrap:break-word" class="form-control " name="recipe_ingredients"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Recipe Instructions</label>
+                <textarea style="white-space:pre-wrap; word-wrap:break-word" class="form-control " name="recipe_instructions"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFile">Recipe Image</label>
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="exampleInputFile" name="recipe_image">
+                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- /.card-body -->
+
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+        </div>
+    </div>
+</div>        
+{% endblock %}

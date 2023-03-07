@@ -1,0 +1,55 @@
+{% extends 'Admin_index.html' %}
+{% block content %}
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-6">
+      <!-- general form elements -->
+      <div class="card bg-secondary">
+        <div class="card-header">
+          <h3 class="card-title">Fish Products</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="{% url 'adding_product' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="card-body">
+            <div class="form-group">
+              <label >Fish Name</label>
+              <input type="text" class="form-control"  name="product_name">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Fish Category</label>
+              <select  class="form-control form-control-lg" name="product_category">
+                {% for i in data %}
+                <option>{{i.category_name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="exampleInputPassword1">Fish Quantity</label>
+                <input type="number" class="form-control" name="product_quantity">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Fish Price</label>
+                <input type="number" class="form-control" name="product_price">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputFile">Fish Image</label>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="exampleInputFile" name="product_image">
+                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+{% endblock %}

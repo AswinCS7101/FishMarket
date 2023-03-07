@@ -1,0 +1,47 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-10">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Fish Categories</strong>
+            </div>
+            <div class="table-stats order-table ov-h">
+                <table class="table" >
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="serial">#</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th></th>
+                            <th></th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in data %}
+                        <tr >
+                            <td class="serial">{{i.id}}.</td>
+                            <td >
+                                <div class="round-img">
+                                    <img  src="{{i.category_image.url}}" >
+                                </div>
+                            </td>
+                            <td>  <span class="name">{{i.category_name}}</span> </td>
+                            <td  style="white-space:pre-wrap; word-wrap:break-word"> {{i.category_description}} </td>
+                            <td>
+                              <a href="{% url 'edit_category' ID=i.id %}"> <button class="btn btn-primary">Edit</button></a>
+                            </td>
+                            <td>
+                                <a href="{% url 'delete_category' Id=i.id %}"><button class="btn btn-danger">Delete</button></a>
+                             </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>        
+</div>
+{% endblock %}

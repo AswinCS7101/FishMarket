@@ -1,0 +1,41 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-10">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">New Registered Users</strong>
+            </div>
+            <div class="table-stats order-table ov-h">
+                <table class="table" >
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="serial">#</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Phone.No</th> 
+                            <th>Status</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in data %}
+                        <tr >
+                            <td class="serial">{{i.id}}</td>
+                            <td>{{i.new_username}}</td>
+                            <td>{{i.new_email}}</td>
+                            <td> {{i.new_phone_no}} </td>
+                            <td>{{i.new_status}}</td>
+                            <td><a href="{% url 'approve_user' ID=i.id %}"><button class="btn btn-primary">Approve</button></td></a>
+                            <td><a href="{% url 'user_delete' Id=i.id  %}"><button class="btn btn-danger">Decline</button></td></a>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>        
+</div>
+
+{% endblock %}

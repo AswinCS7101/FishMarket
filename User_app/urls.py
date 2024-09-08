@@ -2,7 +2,7 @@ from django.urls import path,include
 from . import views
 
 urlpatterns = [
-    path('user_index',views.user_index,name='user_index'),
+    path('',views.user_index,name='user_index'),
     path('user_view_recipe',views.user_view_recipe,name='user_view_recipe'),
     path('user_login',views.user_login,name='user_login'),
     path('user_member_login',views.user_member_login,name='user_member_login'), 
@@ -16,9 +16,11 @@ urlpatterns = [
     path('check_out',views.check_out,name='check_out'),
     path('checking_out',views.checking_out,name='checking_out'),
     path('filter_category<str:filter>',views.filter_category,name='filter_category'),
-    path('new_register',views.new_register,name='new_register'),
+    path('only_category',views.only_category,name='only_category'),
     path('add_new_registeration',views.add_new_registeration,name='add_new_registeration'),
-    path('new_login',views.new_login,name='new_login'),
+    path('only_products',views.only_products,name='only_products'),
     path('new_user_login',views.new_user_login,name='new_user_login'),
-    path('cart_update',views.cart_update,name='cart_update')
+    path('cart_update',views.cart_update,name='cart_update'),
+    path('contact',views.contact,name='contact'),
+    path('view_single_recipe<int:ID>',views.view_single_recipe,name='view_single_recipe')
 ]

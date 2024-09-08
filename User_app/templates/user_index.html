@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>Freshshop - Ecommerce Bootstrap 4 HTML Template</title>
+    <title>Fish Mart</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -62,7 +62,11 @@
 	<link rel="stylesheet" href="{% static 'product_css/assets/css/main.css' %}">
 	<!-- responsive -->
 	<link rel="stylesheet" href="{% static 'product_css/assets/css/responsive.css' %}">
-
+    <style type="text/css"> 
+        .error{
+            color:red;
+        }
+    </style>
 
 
     <!--[if lt IE 9]>
@@ -81,7 +85,7 @@
     <header class="main-header">
         <!-- Start Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
-            <div class="container">
+            <div class="container-fluid">
                 <!-- Start Header Navigation -->
                 <div class="navbar-header">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,24 +99,10 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item active"><a class="nav-link" href="{% url 'user_index' %}">Home</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="nav-link " data-toggle="dropdown">Category</a>
-                            <ul class="dropdown-menu">
-                                {% for i in data2 %}
-								<li><a href="shop.html">{{i.category_name}}</a></li>
-								{% endfor %}
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="nav-link " data-toggle="dropdown">Products</a>
-                            <ul class="dropdown-menu">
-                                {% for i in data %}
-								<li><a href="shop.html">{{i.product_name}}</a></li>
-								{% endfor %}
-                            </ul>
-                        </li>
+                        <li><a href="{% url 'only_category' %}" class="nav-link " >Category</a></li>
+                        <li><a href="{% url 'only_products' %}" class="nav-link " >Products</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'user_view_recipe' %}">Recipes</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact Us</a></li>
                         
                     </ul>
                 </div>
@@ -251,7 +241,7 @@
                         <div class="col-lg-4 col-md-6 text-center">
                             <div class="single-product-item">
                                 <div class="product-image">
-                                    <a href="single-product.html"><img src="{{i.product_image.url}}" alt="" height="200px"></a>
+                                    <img src="{{i.product_image.url}}" alt="" height="200px">
                                 </div>
                                 <h3>{{i.product_name}}</h3>
                                 <p class="product-price"><span>Per Kg</span> {{i.product_price}}$ </p>

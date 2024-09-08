@@ -1,0 +1,49 @@
+{% extends 'user_index.html' %}
+{% block content %}
+{% load static %}
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <h1>Single Recipies</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+<!-- single article section -->
+{% for i in data3 %}
+<div class="mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1>{{i.recipe_name}}</h1>
+                <div class="single-article-section">
+                    <div class="single-article-text">
+                        <div class="single-artcile">
+                            <img src="{{i.recipe_image.url}} " height="500px">
+                        </div><br>
+                        <h3 style="text-decoration: underline;">Instructions</h3>
+                        <p style="white-space:pre-wrap; word-wrap:break-word;font-size: large;font-weight: 600;">{{i.recipe_instructions}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar-section">
+                    <div class="recent-posts">
+                        <h3  style="text-decoration: underline;">Ingredients</h3>
+                        <ul style="white-space:pre-wrap; word-wrap:break-word;">
+                            <li style="font-size: medium;font-weight: 600;">{{i.recipe_ingredients}}</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

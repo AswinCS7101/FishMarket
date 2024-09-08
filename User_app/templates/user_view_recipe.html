@@ -52,7 +52,7 @@
                         <a href="single-product.html"><img src="{{i.recipe_image.url}}" alt="" height="200px"></a>
                     </div>
                     <h3>{{i.recipe_name}}</h3>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> View Recipe</a>
+                    <a href="{% url 'view_single_recipe' ID=i.id  %}" class="cart-btn"><i class="fas fa-eye"></i> View Recipe</a>
                 </div>
             </div>
             {% endfor %}           

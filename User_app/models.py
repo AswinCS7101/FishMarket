@@ -23,6 +23,7 @@ class checkout_data(models.Model):
     address = models.CharField(max_length=10)
     phone_no = models.IntegerField()
     email = models.EmailField()
+    order = models.TextField(default=0)
 
     def __str__(self):
         return self.name

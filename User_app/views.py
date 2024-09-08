@@ -65,22 +65,21 @@ def user_logout(request):
     return redirect('user_index')  
 
 def single_product(request,ID):
-    data = ADD_Products.objects.filter(id=ID)
-    c=0
+    data = ADD_Products.objects.all()
+    data2 = ADD_Category.objects.all()
+    data3 = ADD_Products.objects.filter(id=ID)
     u = request.session.get('uid')
-    data3 = Cart.objects.filter(user_id = u,status=0)
-    for i in data3 :
-        c +=1
-    return render(request,'single_product.html',{'data':data,'c':c})
+    c = Cart.objects.filter(user_id = u,status=0).count()
+    return render(request,'single_product.html',{'data3':data3,'data2':data2,'data':data,'c':c})
 
 def user_cart(request):
-    c=0
+    
+    data2 = ADD_Category.objects.all()
     u = request.session.get('uid')
-    data = Cart.objects.filter(user_id = u,status=0)
-    for i in data :
-        c +=1
+    data = Cart.objects.filter(user_id=u,status=0)
+    c = Cart.objects.filter(user_id = u,status=0).count()
     s = Cart.objects.filter(user_id = u,status=0).aggregate(Sum('total'))
-    return render(request,'user_cart.html',{'data':data,'s':s,'c':c})
+    return render(request,'user_cart.html',{'data':data,'data2':data2,'s':s,'c':c})
 
 def add_to_cart(request,Id):
     if 'uid' in request.session:
@@ -101,14 +100,13 @@ def cart_delete(request,ID):
     return redirect('user_cart')
 
 def check_out(request):
-    c=0
+    data = ADD_Products.objects.all()
+    data2 = ADD_Category.objects.all()
     u = request.session.get('uid')
-    data3 = Cart.objects.filter(user_id = u,status=0)
-    for i in data3 :
-        c +=1
-    data = Cart.objects.filter(user_id=u,status=0)
+    c = Cart.objects.filter(user_id = u,status=0).count()
+    data3 = Cart.objects.filter(user_id=u,status=0)
     s = Cart.objects.filter(user_id = u,status=0).aggregate(Sum('total'))
-    return render(request,'check_out.html',{'data':data,'s':s,'c':c})
+    return render(request,'check_out.html',{'data3':data3,'data2':data2,'data':data,'s':s,'c':c})
 
 
 def checking_out(request):
@@ -120,7 +118,7 @@ def checking_out(request):
         u = request.session.get('uid')
         data = Cart.objects.filter(user_id=u,status=0)
         for i in data:
-            cart = checkout_data(cart_id=Cart.objects.get(id=i.id),name=full_name, address = address,phone_no=phone_no,email=email )
+            cart = checkout_data(cart_id=Cart.objects.get(id=i.id),name=full_name, address = address,phone_no=phone_no,email=email,order=i.product_id.product_name )
             cart.save()
             Cart.objects.filter(id=i.id).update(status=1)
         return redirect('user_index')    
@@ -128,17 +126,15 @@ def checking_out(request):
 def filter_category(request,filter):
     data = ADD_Products.objects.all()
     data2 = ADD_Category.objects.all()
-    c=0
     u = request.session.get('uid')
-    data3 = Cart.objects.filter(user_id = u,status=0)
-    for i in data3 :
-        c +=1
+    c = Cart.objects.filter(user_id = u,status=0).count()
     f = ADD_Products.objects.filter(product_category = filter)
     return render(request,'filtered_category.html',{'f':f,'data':data,'data2':data2,'c':c})
 
 
-def new_register(request):
-    return render(request,'new_register.html')
+def only_category(request):
+    data2 = ADD_Category.objects.all()
+    return render(request,'only_category.html',{'data2':data2})
 
 def add_new_registeration(request):
     if request.method == 'POST':
@@ -150,8 +146,10 @@ def add_new_registeration(request):
         data.save()
         return redirect('new_admin_register')
     
-def new_login(request):
-    return render(request,'new_login.html')
+def only_products(request):
+    data = ADD_Products.objects.all()
+    data2 = ADD_Category.objects.all()
+    return render(request,'Only_products.html',{'data':data,'data2':data2})
 
 def new_user_login(request):
     if request.method == "POST":
@@ -174,3 +172,16 @@ def cart_update(request):
         print(total)
         Cart.objects.filter(id=cartid).update(quantity=q,total=total)
     return HttpResponse()    
+
+def contact(request):
+    data = ADD_Products.objects.all()
+    data2 = ADD_Category.objects.all()
+    u = request.session.get('uid')
+    c = Cart.objects.filter(user_id = u,status=0).count()
+    return render(request,'contact.html',{'data':data,'data2':data2,'c':c})
+
+def view_single_recipe(request,ID):
+    data = ADD_Products.objects.all()
+    data2 = ADD_Category.objects.all()
+    data3 = ADD_Recipe.objects.filter(id=ID)
+    return render(request,'view_single_recipe.html',{'data3':data3,'data2':data2,'data':data})

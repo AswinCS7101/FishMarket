@@ -20,7 +20,7 @@
             </div>
             <div class="checkout__form">
                 <h4>Billing Details</h4>
-                <form action="{% url 'checking_out' %}" method="POST">
+                <form action="{% url 'checking_out' %}" method="POST" id="check_out_form">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
@@ -60,7 +60,7 @@
                                 <h4>Your Order</h4>
                                 <div class="checkout__order__products">Products <span>Total</span></div>
                                 <ul>
-                                    {% for i in data %}
+                                    {% for i in data3 %}
                                     <li>{{i.product_id.product_name}}<span>${{i.total}}</span></li>
                                     {% endfor %}
                                 </ul>
@@ -94,8 +94,11 @@
                                 <input type="submit" class="site-btn" id="order_placed" value="PLACE ORDER" >
                                 <script>
                                     $(document).ready(function(){
-                                        $('#order_placed').click(function(){
-                                            alert("Order Placed");
+                                        $('#check_out_form').submit(function(){
+                                            $('#order_placed').click(function(){
+                                                alert("Order Placed");
+                                            }); 
+                                         
                                         });
                                     });
                                 </script>
@@ -106,4 +109,34 @@
             </div>
         </div>
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+    <script type="text/javascript">
+        $('#check_out_form').validate({
+          rules:{
+            full_name :{
+              required : true,
+              minlength : 6
+            },
+            address :{
+              required :true,
+              
+            },
+            phone_no :{
+              required : true,
+              minlenght:10,
+              maxlenght:10
+            },
+            email :{
+              required :true,
+              minlenght : 5
+            },
+          msg:{
+            required:true
+          }  
+      
+          }
+        })
+      
+      </script>
 {% endblock %}
